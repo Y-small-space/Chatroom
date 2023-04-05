@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+    <!--
+        语法                用法                                说明            
+parent()                $("li").parent();                   查找父级
+children(selector)      $("ul").children("li")              相当于 ＄("ul>1i")，最近一级（亲儿子）
+find(selector)          $("ul").find("li");                 相当于＄("ul i"),后代选择器
+siblings(selector)      $(".first").siblings("li");         查找兄弟节点，不包括自己本身
+nextAll([expr])         $(".first").nextAll()               查找当前元素之后所有的同辈元素
+prevtAll([expr])        $(".last").prevAll()                查找当前元素之前所有的同辈元素
+hasClass(class)         $('div').hasClass("protected")      检查当前的元素是否含有某个特定的类，如果有，则返口true
+eq(index)               $("li").eq(2);                      相当于 $("1i:eq(2)"),index 从0开始
+    -->
+    <div class="grandfather">
+        <div class="father">
+            <div class="son">儿子</div>
+        </div>
+    </div>
+    
+    <div class="nav">
+        <p>我是屁</p>
+        <div>
+            <p>我是p</p>
+        </div>
+    </div>
+    <script>
+        //注意一下都是方法 带括号
+        $(function(){
+        //1.父  parent(）
+        console.log($(".son").parent());
+        //2.子
+        //(1)亲儿子 children() 类似子代选择器 ul>li
+        //$(".nav").children("p") .css("color", "red");
+        //（2）可以选里面所有的孩子  包括儿子和孙子  find()   类似于后代选择器
+        $(".nav").find("p").css("color","red");
+        //3.兄
+        });
+    </script>
+</body>
+</html>

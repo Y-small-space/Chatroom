@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>将其他数据类型转换成Number</title>
+    <script type="text/javascript">
+        /*
+         * 将其他数据类型转换成Number
+         *  方式一：
+         *      使用Number（）函数
+         *          -字符串 --> 数字
+         *              1.如果是纯数字的字符串，则直接将其转换数字
+         *              2.如果字符串中有非数字的内容，则转换为NaN
+         *              3.如果字符串是一个空串或者是一个全是空格的字符
+         *          -布尔值 --> 数字
+         *              1.true --> 1
+         *              2.false --> 0
+         *          -null --> 数字 0
+         *          -undefined --> 数字 NaN
+         *  方式二：
+         *          -这种方式专门用来对付字符串
+         *          -parseInt（）专门用来把一个字符串转换成一个整数
+         *          -parseFloat（）专门用来把一个字符串转换成一个浮点数
+         *
+         *
+         */
+
+        var a, b, c, d, e, f, n1, n2, n3, n4;
+        a = "123";
+        console.log(typeof a);
+
+        b = Number(a);
+        console.log(b);
+        console.log(typeof b);
+
+        c = null;
+        d = Number(c);
+        console.log(d);
+        console.log(typeof d);
+
+        e = undefined;
+        f = Number(e);
+        console.log(f);
+        console.log(typeof f);
+
+        n1 = "123a567px";
+        n2 = parseInt(n1);
+        console.log(n2);
+
+        n3 = "123.123";
+        n4 = parseFloat(n3);
+        console.log(n4);
+        /*
+         * 如果对与非string值，会先转换成string值再进行转换
+         */
+        n3 = true;
+        n4 = parseInt(n3);
+        console.log(n4);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

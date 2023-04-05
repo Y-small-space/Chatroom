@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组的去重</title>
+    <script type="text/javascript">
+      //creat a array
+
+      var arr = [1,2,3,4,4,2,5,5,6,4,4,7,9,0,5,6,0];
+
+      //去除重复元素
+
+      //获取每一个元素
+
+      for (var i = 0; i < arr.length; i++){
+        //console.log(arr[i]);
+        //获取当前元素之后的元素
+        for (var j = i +1;j < arr.length; j ++){
+          //console.log("----->"+arr[j])
+          if (arr[i] == arr[j]){
+            arr.splice(j,1);
+            //在这里数组中的相同元素去除时，后面的元素会向前进位，所以会导致漏掉与下一位的比较，所以如果相同剪掉同时，还得向后退一 位
+            j--;
+
+          }
+        }
+      }
+
+      console.log(arr);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

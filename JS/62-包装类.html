@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>包装类</title>
+    <script type="text/javascript">
+      /*
+       * 数据类型：数值、字符串、布尔值
+       */
+      /*
+       * 所谓“包装对象”，就是分别与数值、字符串、布尔值相对应的Number、String、Boolean三个原生对象。
+       * 这三个原生对象可以把原始类型的值变成（包装成）对象
+       */
+      var v1 = new Number(123);
+      var v2 = new String('abc');
+      var v3 = new Boolean(true);
+      console.log(typeof v1);
+      console.log(typeof v2);
+      console.log(typeof v3);
+      console.log(v1 === 123);
+      console.log(v2 === 'abc');
+      console.log(v3 === true);
+
+      //实例方法
+      //1：valueOf方法返回包装对象实例对应的原始类型的值。
+      console.log(v1.valueOf())
+      console.log(v2.valueOf());
+      console.log(v3.valueOf());
+
+      //2:toString方法返回对应的字符串形式.
+      console.log(v1.toString());
+      console.log(v2.toString());
+      console.log(v3.toString());
+      var v11 = v1.toString();
+      console.log(typeof v11);
+
+      //详细内容：https://javascript.ruanyifeng.com/stdlib/wrapper.html
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

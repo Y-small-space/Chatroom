@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>解构赋值</title>
+    <script type="text/javascript">
+      //ES6 允许按照一定模式从数组和对像中提取值，对变量进行赋值。
+      //这成为解构赋值
+      //1.数组的解构：
+      const four = ['1','2','3','4'];
+      let [a,b,c,d] = four;
+      console.log(a);
+      console.log(b);
+      console.log(c);
+      console.log(d);
+      
+      //2.对象的解构
+      const people = {
+          name : '姓名',
+          age : '年龄',
+          work: function () {
+              console.log("我是干什么的");
+          }
+      };
+
+      let {name, age, work} = people;
+      console.log(name);
+      console.log(age);
+      console.log(work);
+
+      work();
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

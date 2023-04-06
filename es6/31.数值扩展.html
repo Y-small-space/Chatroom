@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数值扩展</title>
+</head>
+<body>
+    <script>
+        //EPSILON 属性的值接近手 2.2294469492593139898472633361816E-16
+        function equal (a, b){
+            if(Math.abs(a-b) < Number. EPSILON) {
+            return true;
+            }else{
+            return false;}
+        }
+        console.log(equal(0.1 + 0.2, 0.3));
+        
+        //2.Number.isFinite 检测一个数值是否为有限数
+        console.log(Number.isFinite(100));
+        console.log(Number.isFinite(100/0)) ;
+        console.log(Number.isFinite(Infinity));
+
+        //3.Number.isNaN 检测一个数值是否为 NaN
+        console.log(Number.isNaN(123));
+
+        //4.Number.parseInt Number.parseF1oat字符串转整数
+        console.log(Number.parseInt ('52113141ove'));
+        console.log(Number.parseFloat('3.1415926神奇'));
+
+        //5.Number.isInteger 判断一个数是否为整数
+        console.log(Number.isInteger(5));
+        console.log(Number.isInteger(2.5));
+
+        //6.Math.trunc 将数字的小数部分抹掉
+        console.log(Math.trunc(3.5));
+
+        //7. Math.sign 料断一个数到底正数 负数 还是0
+        console.log(Math.sign(100));
+        console.log(Math.sign(0));
+        console.log(Math.sign(-20000));
+    </script>
+</body>
+</html>

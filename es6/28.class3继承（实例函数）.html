@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>继承</title>
+</head>
+<body>
+    <script>
+        //实例函数
+        function A(x,y){
+            this.x = x;
+            this.y = y;
+        }
+
+        A.prototype.call = function(){
+            console.log("A")
+        }
+
+        function B(x,y,z,e){
+            A.call(this,x,y);
+            this.z = z;
+            this.e = e;
+        }
+
+        //设置子级构造函数的原型
+        B.prototype = new A();
+        B.prototype.constructor = B;
+
+        //声明子类的方法
+        B.prototype.p = function(){
+            console.log('p');
+        }
+        B.prototype.q = function(){
+            console.log('q');
+        }
+
+        const Ur = new B('a',1,'c',1);
+        console.log(Ur);
+
+    </script>
+</body>
+</html>

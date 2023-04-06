@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>const</title>
+    <script type="text/javascript">
+      //声明常量
+      const A = 1;
+
+      //1.一定要赋初始值
+      // const A;╳
+      // A = 1;╳
+
+      //2.一般常量使用大写（小写也可以但是不规范）
+
+      //3.常量不可以修改
+      // A = 2；╳
+
+      //4.块级作用域
+      //{
+      //   const B = 4;
+      //}
+      //console.log(B);
+
+      //5.对于数组和对象的元素修改，不算作对常量的修改，不会报错
+      const TEAM = ['a','b','c','d'];
+      TEAM.push('e');
+      console.log(TEAM);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

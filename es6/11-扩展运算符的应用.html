@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>扩展运算符的应用</title>
+
+</head>
+<body>
+ <div></div>
+ <div></div>
+ <div></div>
+ <div></div>
+ <script>
+   //1:数组的合并
+   var arr1 = ['a', 'b', 'c'];
+   var arr2 = ['e', 'f', 'g'];
+   var arr3 = arr1.concat(arr2);
+   console.log(arr3);
+   var arr4 = [...arr1,...arr2];
+   console.log(arr4); 
+
+   //2:数组的克隆
+   var arr5 = [...arr1];
+   console.log(arr5);
+
+   //3:将伪数组转化伪真正的数组
+   const divs = document.querySelectorAll('div');
+   console.log(divs);
+   const divArr = [...divs];
+   console.log(divArr);
+</script>
+</body>
+</html>

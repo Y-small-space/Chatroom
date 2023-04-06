@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成器</title>
+</head>
+<body>
+    <script>
+        //生成器就是一个特殊的函数
+        //异步编程: 之前：纯回调函数 node f s ajax mongodb
+        function* gen(){
+            console.log('hello')
+        }
+        let literate = gen();
+        //生成器函数不可以直接用console.log方式输出
+        //得调用next()方法
+        literate.next()
+        
+        
+        //生成器函数中可以出现yield语句
+        //yield语句可以看作是函数代码的分隔符 
+        function* gen2(){
+            //console.log('one');
+            yield '1';
+            //console.log('two');
+            yield '2';
+            //console.log('three');
+            yield '3';
+            //console.log('four');
+            yield '4';
+            //console.log('five');
+        }
+        let literate2 = gen2();
+
+        //literate2.next();
+        //literate2.next();
+        //literate2.next();
+        //literate2.next();
+        //literate2.next();
+        //literate2.next();
+
+        //做一个遍历
+        //for (let v of gen2()){
+        //    console.log(v)
+        //}
+
+        console.log(literate2.next());
+        console.log(literate2.next());
+        console.log(literate2.next());
+        console.log(literate2.next());
+        console.log(literate2.next());
+        
+
+        //参数问题
+        
+        function* gen3(arg){
+            console.log(arg);
+            let one = yield '1';
+            console.log(one);
+            let two = yield '2';
+            console.log(two);
+            let three = yield '3';
+            console.log(three); 
+        }
+
+        let iterator3 = gen3('aaa');  
+        console.log(iterator3.next());   
+        console.log(iterator3.next('bbb'));
+        console.log(iterator3.next('ccc'));
+        console.log(iterator3.next('ddd'));
+        //next方法可以传入实参   
+
+        
+
+
+    </script>
+    
+</body>
+</html>

@@ -14,7 +14,7 @@ const fs = require('fs');
 //参数1：读取文件的存放路径
 //参数2：读取文件时候采用的编码格式，一般默认指定 utf-8
 //参数3：回调函数，拿到读取失败和成功的结果 err dataStr
-fs.readFile('../resource/班级.md', 'utf8', function(err, dataStr) {
+fs.readFile('../resource/1.txt', 'utf8', function(err, dataStr) {
 //2.1 打印失敗的結果
 //如果速取成功，則 err 的値力 null
 // 如果读取失败，则err 的值为 错误对象，datastr 的值为 undefined

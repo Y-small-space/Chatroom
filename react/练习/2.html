@@ -1,0 +1,40 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>类式组件</title>
+    </head>
+    <body>
+        <!-- 准备好一个容器 -->
+        <div id="test"></div>
+        <!-- 引入react库 -->
+        <script type="text/javascript" src="../out/react.development的副本.js"></script>
+        <!-- 引入react-dom，用于支持react操作dom-->
+        <script type="text/javascript" src="../out/react-dom.development的副本.js"></script>
+        <!-- 引入babel，用于将jsx转换成js-->
+        <script type="text/javascript" src="../out/babel.min.js"></script>
+
+        <script type="text/babel">
+        const root = ReactDOM.createRoot(document.getElementById("test"));
+        class Toggle extends React.Component {
+            constructor(props) {
+            super(props);
+            this.state = { isToggleOn: true };
+
+            // 为了在回调中使用 `this`，这个绑定是必不可少的
+            this.handleClick = this.handleClick.bind(this);
+            }
+
+            handleClick() {
+            this.setState((prevState) => ({
+                isToggleOn: !prevState.isToggleOn,
+            }));
+            }
+
+            render() {
+            return <button onClick={this.handleClick}>{this.state.isToggleOn ? "ON" : "OFF"}</button>;
+            }
+        }
+        </script>
+    </body>
+    </html>

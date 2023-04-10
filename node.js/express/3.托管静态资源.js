@@ -9,6 +9,7 @@ const app = express()
 app. use(" Public', express.static('public'))
 */
 app.use(express.static('../resource2/src'))
+app.use('/file',express.static('../resource'))
 
 app.listen(8070,()=>{
     console.log('express server running at http:127.0.0.1:8070')

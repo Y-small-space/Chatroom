@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX GET 请求</title>
+    <style>
+        #result{
+            width: 200px;
+            height: 100px;
+            border: solid 1px paleturquoise
+        }
+    </style>
+</head>
+<body>
+    <button>点击发送请求</button>
+    <div id="result"></div>
+    <script>
+        const btn = document.getElementsByTagName('button')[0];
+        const div = document.getElementById('div');
+        btn.onclick = function(){
+            console.log('hello')
+            //1.创建对象
+            const xhr = new XMLHttpRequest();
+            //2.初始化  设置请求的方法和url
+            xhr.open('GET','http://127.0.0.1:8000/server');
+            //3.发送
+            xhr.send();
+            //4.事件绑定 处理服务端返回的结果
+            // on when当。。的时候
+            // readystate 是xhr对像中的一个属性，表示状态 0(未初始化这个属性最开始值就为0) 
+            // 1(表示open方法已经调用完毕)2(表示send方法已经调用完毕)3(服务端返回部分的结果)4(表示服务端返回所有结果)
+            // change 改变
+            xhr.onreadystatechange = function(){
+                //判断
+                if(xhr.readyState === 4){
+                    //判断响应状态码 200 404 403 401 500
+                    //2XX 都为成功
+                    if(xhr.status>=200&&xhr.status<300){
+                        //处理结果 行 头 空行 体
+                        //1.响应行
+                        /*console.log(xhr.status);//状态码
+                        console.log(xhr.statusText);//状态字符串
+                        console.log(xhr.getAllResponseHeaders());//所有的响应头
+                        console.log(xhr.response);//响应体*/
+
+                        //设置result文本
+                        result.innerHTML = xhr.response; 
+                    }else{
+
+                    }
+                }
+                 
+            }
+             
+
+        }
+    </script>
+</body>
+</html>

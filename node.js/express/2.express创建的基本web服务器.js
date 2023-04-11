@@ -15,12 +15,34 @@ app.post('/server',(req,res)=>{
     //设置响应体
     res.send('请求成功POST')
 });
-app.get('./server',(req,res)=>{
+app.get('/server',(req,res)=>{
     //设置响应头
     res.setHeader('Access-Control-Allow-Origin','*')
     //调用express提供的send()
     //设置响应体
     res.send('请求成功GET')
+})
+app.all('/server',()=>{
+    //设置响应头 设置允许跨域
+    response.setHeader('Access-Control-Allow-Origin','*');
+    //响应头
+    response.setHeader('Access-Control-Allow-Headers','*');
+    //设置响应体
+    res.send('HELLO AJAX JSON!');
+})
+app.all('/json-server',(req,res)=>{
+    //设置响应头 设置允许跨域
+    res.setHeader('Access-Control-Allow-Origin','*');
+    //响应头
+    res.setHeader('Access-Control-Allow-Headers','*');
+    //设置响应体
+    const data = {
+        name : 'sas'
+    }
+    
+    let str = JSON.stringify(data);
+
+    res.send(str);
 })
 
 /* app.use(cors({

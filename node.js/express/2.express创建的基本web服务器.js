@@ -8,13 +8,20 @@ app.get('/user',(res,req)=>{
     //调用express提供的res.send（）放发，向客户端响应一个JSON对象
     res.send({name:'zs',age:20,gender:'男'})
 }) */
-app.get('/server',(req,res)=>{
+app.post('/server',(req,res)=>{
     //设置响应头
     res.setHeader('Access-Control-Allow-Origin','http://127.0.0.1:5500')
     //调用express提供的send()
     //设置响应体
-    res.send('请求成功')
+    res.send('请求成功POST')
 });
+app.get('./server',(req,res)=>{
+    //设置响应头
+    res.setHeader('Access-Control-Allow-Origin','*')
+    //调用express提供的send()
+    //设置响应体
+    res.send('请求成功GET')
+})
 
 /* app.use(cors({
     origin: 'http://127.0.0.1:5500',

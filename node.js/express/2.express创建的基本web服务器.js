@@ -37,7 +37,8 @@ app.all('/json-server',(req,res)=>{
     res.setHeader('Access-Control-Allow-Headers','*');
     //设置响应体
     const data = {
-        name : 'sas'
+        name : 'sa',
+        age : 'dwiu' 
     }
     
     let str = JSON.stringify(data);

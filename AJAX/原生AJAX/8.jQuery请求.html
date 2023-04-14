@@ -19,12 +19,12 @@
     </div>
     <script>
         $('button').eq(0).click(function(){
-            $.get('http://127.0.0.1:8000/jQuery-server',{a:200,b:100},function(data){
+            $.get('http://127.0.0.1:8090/api/user/list',{a:200,b:100},function(data){
                 console.log(data);
-            },'json')
+            })
         })
         $('button').eq(1).click(function(){
-            $.post('http://127.0.0.1:8000/jQuery-server',{a:200,b:100},function(data){
+            $.post('http://127.0.0.1:8090/api/user/list',{a:200,b:100},function(data){
                 console.log(data);
             })
         })

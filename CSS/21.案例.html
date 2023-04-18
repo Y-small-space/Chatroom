@@ -7,16 +7,21 @@
     <title>小米侧边栏</title>
     <style>
         a{
-            width: 200px;
+            width: 170px;
             height: 30px;
             display: block;
             background-color: grey;
             text-decoration: none;
-            text-indent: 2em;
+            padding-left: 30px;
             color: white;
             /*让文字居中可以让文字的行高等于盒子的高度 */
             line-height: 30px
         }
+        /*  小米导航案例修改-padding影响盒子大小计算
+                padding内边距可以撑开盒子，有时候,也会让我们去修改宽度
+                所以小米侧边栏这个案例,文字距离左侧的距离不应该用 text-indent这样不精确
+                实际开发的做法是给padding值,这样更加精确。
+        */
         a:hover{
             background-color: orange;
         }

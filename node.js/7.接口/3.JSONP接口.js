@@ -18,4 +18,17 @@ JSONP接口
 
         这是一个开启了 CORS 的接口
         app.get('/api/get', (reg, res) => {})
+
+    3.实现 JSONP 接口的步骤
+        1).获取客户端发送过来的回调函数的名字
+        2).得到要通过 JSONP 形式发送给客户端的数据
+        3).根据前两步得到的数据，拼接出一个函数调用的字符串
+        4).把上一步拼接得到的字符串，响应给客户端的 <script> 标签进行解析执行
+
+    4.实现 JSONP 接口的具体代码
+        app.get('/api/jsonp', (reg, res) 
+        const funcName = req.query .callback
+        const data = f name 'zs', age: 22 }
+        const scriptstr = “$tfuncName)($(JSoN. stringify(data))'
+        res.send (scriptStr)
 */

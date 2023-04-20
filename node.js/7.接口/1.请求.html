@@ -24,7 +24,7 @@
             })
         })
         $('button').eq(1).click(function(){
-            $.post('http://127.0.0.1:8090/api/user/list',{a:200,b:100},function(data){
+            $.post('http://127.0.0.1:8090/api/post',{"a":"a","b":"b"},function(data){
                 console.log(data);
             })
         })

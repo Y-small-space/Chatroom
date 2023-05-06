@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .box{
+            position: relative;
+            width: 520px;
+            height: 280px;
+            margin: 100px auto;
+            background-color: rgb(174, 193, 193);
+        }
+        .prev-right,
+        .prev-left{
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 30px;
+            margin-top: -15px;
+            background-color: rgba(0, 0, 0, .3);
+            color: rgb(240, 232, 8);
+            text-decoration: none;
+            line-height: 30px;
+            font-size: 16px;
+        }
+        .prev-left{
+            left: 0;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+        .prev-right{
+            right: 0;
+            width: 10px;
+            padding-left: 10px;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="./image/截屏2023-05-06 18.23.40.png" alt="">
+        <a href="#" class="prev-left"> &lt;</a>
+        <a href="#" class="prev-right"> > </a>
+    </div>
+</body>
+</html>

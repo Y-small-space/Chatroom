@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .slider{
+            position: relative;
+            width: 520px;
+            height: 280px;
+            margin: 100px auto;
+        }
+        img{
+            width: 520px;
+            height: 280px;
+            object-fit: contain;
+        }
+        .prev-right,
+        .prev-left{
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 30px;
+            margin-top: -15px;
+            background-color: rgba(0, 0, 0, .3);
+            color: rgb(240, 232, 8);
+            text-decoration: none;
+            line-height: 30px;
+            font-size: 16px;
+        }
+        .prev-left{
+            left: 0;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+        .prev-right{
+            right: 0;
+            width: 10px;
+            padding-left: 10px;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+        }
+        .slider-footer{
+            position: absolute;
+            top: 240px;
+            left: 20px;
+            width: 100px;
+            height: 30px;
+            padding-left: 20px;
+        }
+        .slider-footer li{
+            float: left;
+            width: 10px;
+            height: 30px;
+            line-height: 30px;
+            color: rgb(43, 41, 41);
+        }
+        .slider-footer .active{
+            color: snow;
+        }
+        p{
+            position: absolute;
+            top: -100px;
+            right: 40px;
+            color: ghostwhite;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        事件监听
+        •语法：
+        元素对象.addEventListener（•事件类型’，要执行的函数）
+        •事件监听三要素：
+        ＞事件源：那个dom元素被事件触发了，要获取dom元素
+        ＞事件类型：用什么方式触发，比如鼠标单击 click、鼠标经过 mouseover等
+        ＞事件调用的函数：要做什么事 
+    -->
+    <div class="slider">
+        <div class="slider">
+            <img src="./resource/1.jpg" alt="" >
+        </div>
+        <ul class="slider-footer">
+            <p>小草神</p>
+            <div class="slider-list">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </div>
+        </ul>
+        <a href="#" class="prev-left"> &lt;</a>
+        <a href="#" class="prev-right"> > </a>
+    </div>
+    <script>
+        const data = [
+            { url:'./resource/1.jpg', title:'小草神', color:'green'},
+            { url:'./resource/2.jpg', title:'椰羊', color:'skyblue'},
+            { url:'./resource/3.jpg', title:'凌华', color:'blue'},
+            { url:'./resource/4.jpg', title:'璃月', color:'yellow'},
+            { url:'./resource/5.jpg', title:'胡桃', color:'red'},
+            { url:'./resource/6.jpg', title:'妮露', color:'skyblue'},
+            { url:'./resource/7.jpg', title:'胡桃', color:'red'},
+            { url:'./resource/8.jpg', title:'凌华', color:'blue'},
+            { url:'./resource/9.jpg', title:'少女', color:'grey'}
+        ]
+        const left = document.querySelector('.prev-left');
+        const right = document.querySelector('.prev-right');
+        const img = document.querySelector('.slider img');
+        const p = document.querySelector('p');
+        const slider = document.querySelector('.slider');
+        slider.style.backgroundColor=data[0].color
+        let i = 0;
+        right.addEventListener('click',function(){
+            i++;
+            i>8 ? i=0:i
+            toggle();
+        })
+        left.addEventListener('click',function(){
+            i--;
+            i<0 ? i=8:i
+            toggle();
+        })
+
+        function toggle(){
+            img.src = data[i].url;
+            p.innerHTML = data[i].title;
+            slider.style.backgroundColor = data[i].color;
+            document.querySelector('.slider-list .active').classList.remove('active');
+            document.querySelector(`.slider-list li:nth-child(${i+1})`).classList.add('active');
+        }
+    </script>
+</body>
+</html>

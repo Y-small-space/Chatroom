@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        阅读注册协议
+        需求：按钮60秒之后才可以使用
+        分析：
+        ①：开始先把按钮禁用 （disabled属性）
+        ②：一定要获取元素
+        ⑧：函数内处理逻辑
+            秒数开始减减
+            按钮里面的文字跟着一起变化
+            如果秒数等于 0 停止定时器 里面文字变为 同意 最后 按钮可以点击
+    -->
+    <button class="btn" disabled>我已阅读过此协议</button>
+    <script>
+        const btn = document.querySelector('.btn');
+        let i = 60;
+        let n = setInterval(function(){
+            i--
+            btn.innerHTML = `我已阅读过此协议${i}`;
+            if(i===0){
+                clearInterval(n);
+                btn.disabled=false;
+            }
+        },1000)
+
+
+    </script>
+</body>
+</html>

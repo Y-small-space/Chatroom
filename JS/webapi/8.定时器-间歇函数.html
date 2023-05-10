@@ -22,7 +22,9 @@
         function fn(){
             console.log('一秒钟一次')
         }
-        setInterval(fn, 1000)
+        let n = setInterval(fn, 1000)
+        console.log(n)
+        clearInterval(n)
     </script>
 </body>
 </html>

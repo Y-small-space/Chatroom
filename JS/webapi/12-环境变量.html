@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        环境对象:
+            目标:能够分析判断函数运行在不同环境中 this 所指代的对象
+            环境对象:指的是函数内部特殊的变量 this，它代表着当前函数运行时所处的环境
+            作用:弄清楚this的指向，可以让我们代码更简洁 
+
+            函数的调用方式不同，this指代的对象也不同
+            [谁调用，this 就是谁]是判断this 指向的粗略规则
+            直接凋用函数，其安相当于是 window.函数，所以 this 指代 window
+    -->
+    <button>click</button>
+    <script>
+        // 每个函数里面都有this环境对象 普通函数里面this指向的是window
+        // function fn() {
+        //      console. Log (this)
+        // }
+        // window.fn()
+        const btn = document.querySelector('button');
+        btn.addEventListener('click',function(){
+            console.log(this)
+            this.style.color = 'red'
+        })
+    </script>
+</body>
+</html>

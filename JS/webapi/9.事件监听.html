@@ -34,12 +34,12 @@
             line-height: 30px;
             font-size: 16px;
         }
-        .prev-left{
+        .slider-choice .prev-left{
             left: 0;
             border-top-right-radius: 15px;
             border-bottom-right-radius: 15px;
         }
-        .prev-right{
+        .slider-choice .prev-right{
             right: 0;
             width: 10px;
             padding-left: 10px;
@@ -84,7 +84,7 @@
         ＞事件调用的函数：要做什么事 
     -->
     <div class="slider">
-        <div class="slider">
+        <div class="slider-img">
             <img src="./resource/1.jpg" alt="" >
         </div>
         <ul class="slider-footer">
@@ -101,8 +101,10 @@
                 <li></li>
             </div>
         </ul>
-        <a href="#" class="prev-left"> &lt;</a>
-        <a href="#" class="prev-right"> > </a>
+        <div class="slider-choice">
+            <a href="#" class="prev-left"> &lt;</a>
+            <a href="#" class="prev-right"> > </a>
+        </div>
     </div>
     <script>
         const data = [
@@ -116,11 +118,12 @@
             { url:'./resource/8.jpg', title:'凌华', color:'blue'},
             { url:'./resource/9.jpg', title:'少女', color:'grey'}
         ]
-        const left = document.querySelector('.prev-left');
-        const right = document.querySelector('.prev-right');
+        const left = document.querySelector('.slider-choice .prev-left');
+        const right = document.querySelector('.slider-choice .prev-right');
         const img = document.querySelector('.slider img');
         const p = document.querySelector('p');
         const slider = document.querySelector('.slider');
+        const choice = document.querySelector('.slider-choice')
         slider.style.backgroundColor=data[0].color
         let i = 0;
         right.addEventListener('click',function(){
@@ -141,6 +144,17 @@
             document.querySelector('.slider-list .active').classList.remove('active');
             document.querySelector(`.slider-list li:nth-child(${i+1})`).classList.add('active');
         }
+
+        let timeId;
+        slider.addEventListener('mouseenter',function(){
+            timeId = setInterval(function(){
+                right.click();
+            },1000);
+        }); 
+        choice.addEventListener('mouseenter',function(){
+            clearInterval(timeId);
+        })
+
     </script>
 </body>
 </html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        事件委托是利用事件流的特征解决一些开发需求的知识技巧
+            ＞优点：减少注册次数，可以提高程序性能
+            ＞原理：事件委托其实是利用事件冒泡的特点。
+            ＞给父元素注册事件，当我们触发子元素的时候，会冒泡到父元素身上，从而触发父元素的事件
+            ＞实现：事件对象.target. tagName 可以获得真正触发事件的元素
+            ul.addEventlistener('click', function(){} 执行父级点击事件
+
+
+            1. 事件委托的好处是什么？
+                ＞减少注册次数，提高了程序性能
+            2．事件委托是委托给了谁？父元素还是子元素？
+                ＞父元素
+            3. 如何找到真正触发的元素？
+                ＞事件对象.target.tagName
+     -->
+     <ul>
+        <li>第个1元素</li>
+        <li>第个2元素</li>
+        <li>第个3元素</li>
+        <li>第个4元素</li>
+        <li>第个5元素</li>
+     </ul>
+     <script>
+        const ul = document.querySelector('ul');
+        ul.addEventListener('click',function(e){
+            if(e.target.tagName === 'LI'){
+                e.target.style.color = 'red'
+            }
+        })
+     </script>
+</body>
+</html>

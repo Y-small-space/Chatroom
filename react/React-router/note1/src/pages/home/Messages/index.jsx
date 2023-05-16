@@ -21,7 +21,7 @@ export default function Messages(){
                   <Link to={`/home/messages/detail/${msgObj.id}/${msgObj.title}`}>{msgObj.title}</Link>
                 </li>
               )
-            })
+            }) 
           }
         </ul>
         <hr />

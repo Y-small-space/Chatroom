@@ -1,9 +1,10 @@
-import Demo from "./components/1_setState"
+import React from "react";
+import Demo from "./components/2_lazyLoad"
 
 export default function App(){
-  return(
+  return (
     <div>
-      <Demo/>
+        <Demo />
     </div>
-  )
+  );
 }

@@ -1,10 +1,10 @@
 import React from "react";
-import Demo from "./components/2_lazyLoad"
+import A from "./components/5_Context";
 
 export default function App(){
   return (
     <div>
-        <Demo />
+        <A />
     </div>
   );
 }

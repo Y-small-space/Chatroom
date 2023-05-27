@@ -20,7 +20,7 @@
     </div>
     <script>
         $('button').eq(0).click(function(){
-            $.get('http://127.0.0.1:8090/api/get',{name:'jy',age:20,gender:'man'},function(data){
+            $.get('http://127.0.0.1:3000/api/note',function(data){
                 console.log(data);
             })
         })

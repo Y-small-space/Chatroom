@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form class="info" style="text-align: center;">
+        <input type="text" placeholder="姓名" class="name">
+        <select class="gender">
+            <option value="男">男</option>
+            <option value="女">女</option>
+        </select>
+        <input type="text" placeholder="ATK" class="atk">
+        <input type="text" placeholder="DEF" class="def">
+        <input type="text" placeholder="EL" class="el">
+        <button>ADD</button>
+    </form>
+
+    <div class="title">共有数据<span>0</span>条</div>
+    <table border="1 px" align="center" cellpadding = "0" cellspacing ="0" width="500" >
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>ATK</th>
+                <th>DEF</th>
+                <th>EL</th>
+                <th>插入数据日期</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+           <!--  <tr>
+                <td>1</td>
+                <td>景元</td>
+                <td>男</td>
+                <td>698</td>
+                <td>486</td>
+                <td>150</td>
+                <td>2023/06/11 11:58:00</td>
+                <td>
+                    <a href="javascript">
+                        <i>
+                            删除
+                        </i>
+                    </a>
+                </td>
+            </tr> -->
+        </tbody>
+    </table>
+    <script>
+        const initDate = [
+            {
+               stuId:1,
+               uname:'景元',
+               gender:'男',
+               atk:'698',
+               def:'486',
+               energy_limit:150,
+               time:'2023/06/11 11:58:00'
+            }
+        ]
+
+        //localStorage.setItem('data', JSON.stringify(initDate))
+        // 1. 渲染业务
+        // 1.1 先读取本地存儲的数据
+        //    (1)．本地存储有数据则记得转换为对象然后存储到变量里面，后期用于渲染页面
+        //    (2)．如果没有数据，则用 空数组来代替
+
+        const arr = JSON.parse(localStorage.getItem('data')) || []
+        console.log(arr);
+
+        const tbody = document.querySelector('tbody')
+        //1.2 利用map和join方法来渲染页面
+        function render(){
+            //(1).利用map遍历数组，返回对应tr数组
+            const Newarr = arr.map(function(ele){
+                return `
+                <tr>
+                    <td>${ele.stuId}</td>
+                    <td>${ele.uname}</td>
+                    <td>${ele.gender}</td>
+                    <td>${ele.atk}</td>
+                    <td>${ele.def}</td>
+                    <td>${ele.energy_limit}</td>
+                    <td>${ele.time}</td>
+                    <td>
+                        <a href="javascript">
+                            <i>
+                                删除
+                            </i>
+                        </a>
+                    </td>
+                </tr>
+                `
+            })
+            
+            console.log(Newarr);
+            //(2).把数组转换为字符串 join
+            //(3).把生成的字符串追加给tbody
+            tbody.innerHTML=Newarr.join('')
+
+        }
+        render();
+        //2.新增业务
+        //2.1form表单注册提交事件，阻止默认行为
+
+        const info = document.querySelector('.info')
+        const name  = document.querySelector('.name')
+        const gender = document.querySelector('.gender')
+        const el = document.querySelector('.el')
+        const atk = document.querySelector('.atk')
+        const def = document.querySelector('.def')
+        info.addEventListener('submit',function(e){
+            e.preventDefault()
+            //2.2非空判断
+            if (!name.value || !el.value || !atk.value || !def.value){
+                return alert('输入内容不能为空')
+            }
+
+            arr.push({
+               stuId: arr.length + 1,
+               uname:name.value,
+               gender:gender.value,
+               atk:atk.value,
+               def:def.value,
+               energy_limit:el.value,
+               time: new Date().toLocaleString()
+            })
+
+            render()
+        })
+
+
+    </script>
+</body>
+</html>

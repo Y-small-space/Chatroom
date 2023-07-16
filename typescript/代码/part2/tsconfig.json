@@ -1,0 +1,28 @@
+{
+    /*tsconfig.json是ts编译器的配置文件*/
+    // "include" 用来指定哪些 ts 文件需要被编译
+    // ** 表示任意目录
+    // * 表示任意文件
+
+    "include": [
+        "./**/*"
+    ],
+
+    /*
+        compilerOptions 编译器的选项
+    */
+    "compilerOptions": {
+        // target 用来指定ts被编译为的ES的版本
+        "target": "ESNext",
+        "module": "ES2015",
+        "lib": ["ES6","DOM"],
+
+        // outDir 用来指定编译后文件所在目录
+        // 将代码合并为一个文件
+        // 设置outFile后，所有的全局作用域中的代码都会合并到同一个文件中 去
+        "outDir": "./src"
+        
+    },
+
+    
+}

@@ -31,6 +31,26 @@ module.exports={
                   'less-loader',
                 ],
             },
+            {
+                test:/\.s[ac]ss$/,
+                // loader: 'xxx',// 只能使用1个loader
+                use:[
+                    // 使用多个loader
+                    "style-loader",
+                    "css-loader",
+                    "sass-loader",// 将sass编译成css文件 
+                ]
+            },
+            {
+                test:/\.styl$/,
+                // loader: 'xxx',// 只能使用1个loader
+                use:[
+                    // 使用多个loader
+                    "style-loader",
+                    "css-loader",
+                    "stylus-loader",// 将sass编译成css文件 
+                ] 
+            }
         ],
     },
     // 插件

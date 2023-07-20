@@ -23,10 +23,12 @@ module.exports = {
                 // test指定的是规则生效的文件
                 test: /\.ts$/,
                 // 要使用的loader
-                use: 'ts.loader',
+                use: 'ts-loader',
                 // 要排除的文件 
                 exclude: /node-modules/
             }
         ]
-    }
+    },
+    
+    mode: 'development'
 }

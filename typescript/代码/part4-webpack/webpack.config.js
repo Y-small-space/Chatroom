@@ -35,7 +35,8 @@ module.exports = {
     mode: 'development',
     plugins:[
         new HtmlWebpackPlugin({
-            title:"这是一个自定义的title"
+            //title:"这是一个自定义的title"
+            template:"./src/index.html"
         }),
     ]   
 }

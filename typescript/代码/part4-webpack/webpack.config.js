@@ -1,6 +1,8 @@
 // 引入一个包
 const path = require('path');
 
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
 // webpack 中的所有配置信息都应该写在 module.exports 中
 module.exports = {
 
@@ -25,10 +27,15 @@ module.exports = {
                 // 要使用的loader
                 use: 'ts-loader',
                 // 要排除的文件 
-                exclude: /node-modules/
+                exclude: /node_modules/
             }
         ]
     },
     
-    mode: 'development'
+    mode: 'development',
+    plugins:[
+        new HtmlWebpackPlugin({
+            title:"这是一个自定义的title"
+        }),
+    ]   
 }

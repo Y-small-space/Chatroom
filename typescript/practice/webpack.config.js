@@ -28,7 +28,17 @@ module.exports = {
                 // 要使用的loader
                 use: 'ts-loader',
                 // 要排除的文件
-                exclude: /node-modules/
+                exclude: /node_modules/
+            },
+
+            // 设置less文件的处理
+            {
+                test:/\.less$/,
+                use:[
+                    "style-loader",
+                    "css-loader",
+                    "less-loader"
+                ]
             }
         ]
     },

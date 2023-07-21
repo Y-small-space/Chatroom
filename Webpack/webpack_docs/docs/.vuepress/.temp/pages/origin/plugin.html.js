@@ -113,7 +113,13 @@ export const data = {
     }
   ],
   "git": {
-    "contributors": []
+    "contributors": [
+      {
+        "name": "“y-small-space”",
+        "email": "jy.small.space@outlook.com",
+        "commits": 1
+      }
+    ]
   },
   "filePathRelative": "origin/plugin.md"
 }

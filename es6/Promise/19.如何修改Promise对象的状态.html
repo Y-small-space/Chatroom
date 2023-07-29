@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        Promise对象的状态其中分为三种：pending、fulfilled、rejected
+    -->
+    <script>
+        let p1 = new Promise((resolve,reject)=>{
+            // 成功
+            // resolve('success');
+
+            // 失败
+            // reject('error');
+
+            // 抛出异常
+            // throw '出问题了！';
+
+            // 状态只能更改一次
+            reject('error');
+            resolve('ok');
+        })
+    </script>
+</body>
+</html>

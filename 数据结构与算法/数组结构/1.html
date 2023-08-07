@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 创建数组
+        let arr = new Array(1, 2, 3);
+        console.log(arr);
+
+        let arr2 = [3, 4, 5];
+        console.log(arr2);
+
+        // 访问数组
+        arr[n];
+
+        // 遍历数组
+        for (var i = 0; i < arr.length; i++) {
+            console.log(i);
+        }
+
+        // push pop shift unshift splice
+        // arr.push(4)  1 2 3 4
+        // arr.pop() = 4 arr=[1,2,3]
+        // arr.shift() = 1 arr=[2,3]
+        // arr.unshift(10) arr=[10,2,3]
+        // arr.splice(0,2,5) arr = [3,5]
+        // sort
+        /* let arr3 = [3,2,4,6,5]
+        arr3.sort((x,y)=>x-y)//2,3,4,5,6
+        arr3.sort((x,y)=>y-x)//6,5,4,3,2 */
+
+        let arr4 = [{
+            name: "kerwin",
+            age: 100
+        }, {
+            name: "teichui",
+            age: 18
+        }, {
+            name: "xiaoming",
+            age: 20
+        }]
+
+        arr4.sort((x, y) => x.age - y.age);
+        arr4.sort((x, y) => y.age - x.age);
+
+        let arr5 = [1, 2, 3]
+        let arr6 = [4, 5, 6]
+        arr5.concat(arr6);
+
+        // 迭代方法 every, some, filter, map, foreach, reduce
+        /* let arr7 = [10, 11, 12, 13]
+        let res1 = arr.every(item => item > 10);
+        let res2 = arr.some(item => item > 12);
+        let res3 = arr.filter(item => item > 12);
+        let res4 = arr.map(item => item + "kervin");
+        let res5 = arr.reduce((item1, item2) => item1 + item2);
+        arr7.forEach((item,index)=>{
+            console.log(item,index);
+        }) */
+
+        // 迭代器对象
+         
+    </script>
+</body>
+
+</html>

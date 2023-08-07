@@ -1,10 +1,9 @@
-import IndexRouter from "./Router/router";
-
+import Routers from "./Router/routers";
 
 function App() {
   return (
     <div className="App">
-      <IndexRouter/>
+      <Routers/>
     </div>
   );
 }

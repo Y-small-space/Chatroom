@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Queue {
+            // constructor(){
+            //    this.items = []
+            // }
+            #items = [];
+
+            dequeue() {
+                return this.#items.shift();
+            }
+
+            enqueue(data) {
+                this.#items.push(data);
+            }
+
+            front() {
+                return this.#items.at(0); // 取倒数第一个数据  
+            }
+
+            isEmpty() {
+                return this.#items.length == 0;
+            }
+
+            size() {
+                return this.#items.length;
+            }
+
+            clear() {
+                this.#items = [];
+            }
+
+            toString() {
+                return this.#items.join(" ");
+            }
+        }
+    </script>
+</body>
+
+</html>

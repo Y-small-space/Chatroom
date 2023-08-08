@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  decrement,
+  increment,
+  incrementByAmount,
+  incrementAsync,
+  selectCount,
+} from './counterSlice';
 
 export default function Count() {
-  const [count, setCount] = useState(0);
+  const count = useSelector(selectCount);
+  const dispatch = useDispatch();
+  const [incrementAmount, setIncrementAmount] = useState('2');
 
   const handleChange = (event) => {
     const selectedValue = parseInt(event.target.value, 10);

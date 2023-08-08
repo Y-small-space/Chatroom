@@ -1,11 +1,12 @@
-import Count from "./count/count";
+import { Counter } from "./components/count";
 
 function App() {
   return (
     <div className="App">
-      <Count/>
+      <Counter/>
     </div>
   );
 }
 
 export default App;
+ 

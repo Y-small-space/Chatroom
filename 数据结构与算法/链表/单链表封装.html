@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Node {
+            constructor(element) {
+                this.element = element;
+                this.next = null;
+            }
+        }
+
+        class LinkedList {
+            constructor() {
+                this.count = 0;
+                this.head = null;
+            }
+
+            // push
+            push(element) {
+                const node = new Node(element);
+                //console.log(node);
+
+                // header是空
+                if (this.head === null) {
+                    this.head = node;
+                } else {
+                    let current = this.head;
+
+                    while (current.next !== null) {
+                        current = current.next;
+                    }
+
+                    current.next = node;
+                    // console.log()
+                }
+
+                this.count++
+            }
+
+            // 指定位置删除
+            removeAt(index) {
+                if (index >= 0 && index < this.count) {
+                    if (index === 0) {
+                        this.head = this.head.next
+                    } else {
+                        let previous
+                        let current = this.head
+                        for (let i = 0; i < index; i++) {
+                            previous = current;
+                            current = current.next;
+                        }
+
+                        previous.next = current.next 
+                    }
+
+                    this.count--;
+                    return current.element
+                }
+
+                return
+            }
+        }
+    </script>
+</body>
+
+</html>

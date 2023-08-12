@@ -57,7 +57,28 @@
             }
 
             removeAt() {
+                if(index>=0 && index<this.count){
+                    let current = this.head;
 
+                    if(index===0){
+                        if(this.size()===1){
+                            this.head = undefined;
+                        }else{
+                            let last = this.getNodeAt(this.size()-1);
+                            this.head = this.head.next;
+                            last.next = this.head;
+                        }
+                    }else{
+                        const previous = this.getNodeAt(index-1)
+                        current = previous.next;
+                        previous.next = current.next;
+                    }
+
+                    this.count--;
+                    return current.element;
+                }
+
+                return;
             }
         }
 

@@ -9,7 +9,54 @@
     <script>
         // N = {1, 5, 6};
 
-         
+        class Set{
+
+            items = {};
+
+            add(element){
+                if(!this.has(element)){
+                    this.items[element] = element;
+                    return true;
+                }
+
+                return false;
+            }
+
+            delete(element){
+                if(this.has(element)){
+                    delete this.items[element];
+                    return true;
+                }
+
+                return false;
+            }
+
+            has(element){
+                return element in this.items;
+            }
+
+            clear(){
+                this.items = {};
+            }
+
+            size(){
+                return Object.keys(this.items).length;
+            }
+
+            values(){
+                return Object.values(this.items);
+            }
+        }
+
+        let myset = new Set();
+
+        let arr = [1,2,3,4,5,3,4,5,6];
+
+        arr.forEach(item=>{
+            myset.add(item);
+        })
+
+        console.log(myset.values());
     </script>
 </body>
 </html>

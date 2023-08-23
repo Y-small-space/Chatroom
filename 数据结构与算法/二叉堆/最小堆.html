@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class MinHeap {
+            heap = [];// 数组管理数据
+
+            getLeftIndex(index) {
+                return 2 * index + 1;
+            }
+
+            getRightIndex(index) {
+                return 2 * index + 2;
+            }
+
+            getParentIndex(index) {
+                return Math.floor((index - 1) / 2);
+            }
+
+            insert(value) {
+                if (value != null) {
+                    this.heap.push(value);
+                    // 与父节点对比，如果比父节点小，就要交换位置
+
+                    this.shiftUp(this.heap.length - 1);
+                    return true;
+                }
+
+                return false;
+            }
+
+            comareFn(a, b) {
+                if (a === b) {
+                    return Compare.equ
+                }
+                return a < b ? Compare.less : Compare.bigger
+            }
+
+            shiftUp(index) {
+                let parent = this.getParentIndex(index);
+
+                while (
+                    index > 0 &&
+                    this.comareFn(this.heap[parent], this.heap[index]) ===
+                    Compare.bigger
+                ) {
+                    this.swap(this.heap, parent, index);
+                    index = parent;
+                    parent = this.getParentIndex(index);
+                }
+            }
+
+            swap(array, a, b) {
+                const temp = array[a];
+                array[a] = array[b];
+                array[b] = temp;
+            }
+
+            size() {
+                return this.heap.length;
+            }
+
+            isEmpty() {
+                return this.size() === 0;
+            }
+
+            findTarget(){
+                return this.heap[0];
+            }
+
+            // 删除
+            extract(){
+                if(this.isEmpty()){
+                    return
+                }
+                if(this.size()===1){
+                    return this.heap.shift()
+                }
+
+                const removed = this.head[0]
+
+                this.heap[0] = this.heap.pop()
+
+                this.shiftDown()
+                return removed
+            }
+
+            shiftDown(index){
+                let current = index;
+                let left = this.getLeftIndex(index);
+                let right = this.getRightIndex(index);
+
+                if(this.comareFn(this.heap[current],this.heap[left])===Compare.bigger){
+                    current = left;
+                }
+
+                if(this.comareFn(this.heap[current],this.heap[right])===Compare.bigger){
+                    current = left;
+                }
+
+                if(index!==current){
+                    swap(this.heap,index,current);
+                    this.shiftDown(current);
+                }
+            }
+        }
+
+        let heap = new MinHeap()
+    </script>
+</body>
+
+</html>

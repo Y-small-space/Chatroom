@@ -71,16 +71,16 @@
                 return this.size() === 0;
             }
 
-            findTarget(){
+            findTarget() {
                 return this.heap[0];
             }
 
             // 删除
-            extract(){
-                if(this.isEmpty()){
+            extract() {
+                if (this.isEmpty()) {
                     return
                 }
-                if(this.size()===1){
+                if (this.size() === 1) {
                     return this.heap.shift()
                 }
 
@@ -92,21 +92,22 @@
                 return removed
             }
 
-            shiftDown(index){
+            shiftDown(index) {
                 let current = index;
                 let left = this.getLeftIndex(index);
                 let right = this.getRightIndex(index);
+                let size = this.size();
 
-                if(this.comareFn(this.heap[current],this.heap[left])===Compare.bigger){
+                if (left < size && comareFn(this.heap[current], this.heap[left]) === Compare.bigger) {
                     current = left;
                 }
 
-                if(this.comareFn(this.heap[current],this.heap[right])===Compare.bigger){
+                if (right < size && comareFn(this.heap[current], this.heap[right]) === Compare.bigger) {
                     current = left;
                 }
 
-                if(index!==current){
-                    swap(this.heap,index,current);
+                if (index !== current) {
+                    swap(this.heap, index, current);
                     this.shiftDown(current);
                 }
             }

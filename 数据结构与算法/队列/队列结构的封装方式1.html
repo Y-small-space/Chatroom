@@ -9,21 +9,27 @@
 
 <body>
     <script>
+        // 先进先出
+        // 
         class Queue {
             // constructor(){
             //    this.items = []
             // }
             #items = [];
 
+            // 出队
             dequeue() {
                 return this.#items.shift();
             }
 
+            // 进队
             enqueue(data) {
                 this.#items.push(data);
             }
 
+            // 返回队头
             front() {
+                // return this.items.at(0);
                 return this.#items.at(0); // 取倒数第一个数据  
             }
 
@@ -43,6 +49,8 @@
                 return this.#items.join(" ");
             }
         }
+
+        let queue = new Queue()
     </script>
 </body>
 

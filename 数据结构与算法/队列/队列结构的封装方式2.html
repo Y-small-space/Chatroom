@@ -16,10 +16,11 @@
 
             dequeue() {
                 if (this.isEmpty()) {
-                    let res = this.#items[this.#lowCount];
-                    delete this.#items[this.#lowCount];
-                    this.#lowCount++;
+                    return undefined;
                 }
+                let res = this.#items[this.#lowCount];
+                delete this.#items[this.#lowCount];
+                this.#lowCount++;
                 return res;
             }
 

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function countingSort(array) {
+            // 找到数组中的最大值和最小值
+            let max = array[0];
+            let min = array[0];
+
+            for (let i = 1; i < array.length; i++) {
+                if (array[i] > max) {
+                    max = array[i];
+                }
+                if (array[i] < min) {
+                    min = array[i];
+                }
+            }
+
+            // 创建一个计数数组，用于存储每个元素出现的次数
+            const conutArray = new Array(max - min + 1).fill(0);
+
+            // 统计元素出现的次数
+            for (let i = 0; i < array.length; i++) {
+                conutArray[array[i] - min]++;
+            }
+
+            // 根据计数数组构建排序后的数组
+            const sortedArray = [];
+            for(let i = 0;i<conutArray.length;i++){
+                for(let j = 0;j<conutArray.length;j++){
+                    sortedArray.push(i+min);
+                }
+            }
+
+            return sortedArray;
+        }
+
+        // 使用示例
+        const unsortedArray = [4, 2, 2, 8, 3, 3, 1];
+        const sortedArray = countingSort(unsortedArray);
+        console.log(sortedArray); // 输出 [1, 2, 2, 3, 3, 4, 8]
+    </script>
+</body>
+
+</html>

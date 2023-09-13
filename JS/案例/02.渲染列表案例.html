@@ -30,31 +30,32 @@
 </head>
 <body>
     <h2>订单确认</h2>
-    <table>
-        <tr>
-            <th>商品名称</th>
-            <th>商品价格</th>
-            <th>商品数量</th>
-            <th>总价</th>
-            <th>收货地址</th>
-        </tr>
-        <tr>
-            <th>**</th>
-            <th>**</th>
-            <th>**</th>
-            <th>**</th>
-            <th>**</th>
-        </tr>
-    </table>
     <script>
        // 1. 用户输入
-       let price = prompt('请输入商品价格：') 
-       let num = prompt('请输入商品数量：')
+       let price = +prompt('请输入商品价格：') 
+       let num = +prompt('请输入商品数量：')
        let address = prompt('请输入收货地址：')
        // 2. 计算总额
        let total = price*num;
        // 3. 页面打印渲染
-       
+       document.write(`
+            <table>
+                <tr>
+                    <th>商品名称</th>
+                    <th>商品价格</th>
+                    <th>商品数量</th>
+                    <th>总价</th>
+                    <th>收货地址</th>
+                </tr>
+                <tr>
+                    <td>**</th>
+                    <td>${price}</td>
+                    <td>${num}</ts>
+                    <td>${total}</ts>
+                    <td>${address}</td>
+                </tr>
+            </table>
+       `)
     </script>
 </body>
 </html>

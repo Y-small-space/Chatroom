@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <h1>NOTE BOOK</h1>
+        <input @keyup.enter="add" v-model="todoName" placeholder="请输入任务" class="new" ><button @click="add">添加任务</button>
+        <section>
+            <ul>
+                <li v-for="(item,index) in list" :key="item.id">
+                    <span>{{index+1}}.</span><label>{{item.name}}</label>
+                    <button @click="del(item.id)">x</button>
+                </li>
+            </ul>
+        </section>
+        <footer v-show="list.length>0">
+            <span>合计：{{list.length}}</span><button @click="clear">清空</button>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                todoName: '',
+                list: [
+                    { id: 1, name: 'run' },
+                    { id: 2, name: 'bike' }
+                ]
+            },
+            methods: {
+                del(x) {
+                    this.list = this.list.filter(item => item.id !== x)
+                },
+                add() {
+                    this.list.unshift({
+                        id: +new Date(),
+                        name: this.todoName
+                    })
+                },
+                clear(){
+                    this.list=[]
+                }
+            },
+        })
+    </script>
+
+</body>
+
+</html>

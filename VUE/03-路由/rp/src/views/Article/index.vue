@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <el-main>
+    <router-view :key="$route.fullPath"></router-view>
+  </el-main>
 </template>
 
 <script lang="ts">

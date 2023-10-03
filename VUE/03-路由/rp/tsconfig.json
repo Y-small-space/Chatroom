@@ -7,5 +7,16 @@
     {
       "path": "./tsconfig.app.json"
     }
-  ]
+  ],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "src/router/index.ts"
+  ],
+  "compilerOptions": {
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+  }
 }

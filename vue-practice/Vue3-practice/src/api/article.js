@@ -39,20 +39,16 @@ export const artDelChannelService = (id) => {
 }
 
 // 文章：获取文章列表
-export const artGetListService = (params) => {
+export const artGetListService = async (params) => {
   // eslint-disable-next-line no-useless-catch
   try {
-    request.get('/my/article/list', { params })
-  } catch (error) {
-    throw error
-  }
-}
-
-// 文章：添加文章
-export const artAddService = (data) => {
-  try {
-    request.post('/my/article/add', data)
+    const res = request.get('/my/article/list', { params })
+    console.log(res)
+    return res
   } catch (error) {
     console.log(error)
   }
 }
+
+// 文章：添加文章
+export const artAddService = (data) => request.post('/my/article/add', data)

@@ -36,6 +36,7 @@ const open = (row) => {
 
 const onSelectFile = (uploadFile) => {
   imgUrl.value = URL.createObjectURL(uploadFile.raw)
+  formModel.value.cover_img = uploadFile.raw
 }
 
 const onPublish = async (data) => {
@@ -44,7 +45,7 @@ const onPublish = async (data) => {
   for (let key in formModel.value) {
     fd.append(key, formModel.value[key])
   }
-
+  console.log(fd.getAll('cover_img'))
   if (formModel.value.id) {
     console.log('编辑操作')
   } else {
@@ -53,6 +54,7 @@ const onPublish = async (data) => {
     visibleDrawer.value = false
   }
 }
+
 defineExpose({
   open
 })
@@ -72,6 +74,7 @@ defineExpose({
       </el-form-item>
       <el-form-item label="文章封面" prop="cover_img">
         <el-upload
+          v-model="formModel.cover_img"
           class="avatar-uploader"
           :show-file-list="false"
           :auto-upload="false"

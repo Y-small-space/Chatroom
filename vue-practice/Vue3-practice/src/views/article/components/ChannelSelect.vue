@@ -21,14 +21,14 @@ getChannelList()
 <template>
   <el-select
     :modelValue="modelValue"
-    @updated:modelValue="emit('update:modelValue', $event)"
+    @update:modelValue="emit('update:modelValue', $event)"
     :style="{ width }"
   >
     <el-option
       v-for="channel in channelList"
+      :key="channel.id"
       :label="channel.cate_name"
       :value="channel.id"
-      :key="channel.id"
     ></el-option>
   </el-select>
 </template>

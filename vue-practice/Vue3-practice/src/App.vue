@@ -1,14 +1,13 @@
 <script setup>
-// 在 Vue3 CompositionsApi 中
-// 1. 获取路由对象 router useRouter
-//    const router = useRouter()
-// 2. 获取路由参数 route useRoute
-//    cost route = useRoute
+import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
+// import en from 'element-plus/dist/locale/en.mjs'
 </script>
 
 <template>
   <div class="app">
-    <router-view></router-view>
+    <el-config-provider :locale="zhCn">
+      <router-view></router-view>
+    </el-config-provider>
   </div>
 </template>
 

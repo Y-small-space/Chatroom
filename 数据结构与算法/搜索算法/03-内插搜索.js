@@ -33,7 +33,7 @@ function binarySearch(find, arr, start, end) {
             return end
         }
 
-        let min = Math.ceil((start + end) / 2)
+        let min = start + Math.floor((find - arr[start]) / (arr[end] - arr[start]) * (end - start))
         if (arr[min] == find) {
             return min
         } else if (arr[min] > find) {

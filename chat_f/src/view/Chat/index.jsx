@@ -59,8 +59,8 @@ export default function Chat() {
     setSelectUser_chat(selectedUser)
     socket.emit('join', roomId);
     socket.on('message', (incomingMessage) => {
+      console.log(incomingMessage)
       setChatHistory((prevHistory) => [incomingMessage, ...prevHistory]);
-      setAllChatHistory((prevHistory => [...prevHistory,incomingMessage]))
     })
     return () => {
       socket.off('message');
@@ -75,23 +75,22 @@ export default function Chat() {
   // 整理聊天记录中使用者的name
   useEffect(() => {
     const newRecivername = []
+    console.log(allChatHistory)
     allChatHistory.forEach(item => {
       if (!newRecivername.includes(item.receiver_username) && item.receiver_username !== undefined && item.receiver_username !== userId) {
         newRecivername.push(item.receiver_username)
       }
+      if (item.receiver_username === userId && !newRecivername.includes(item.sender_username)) {
+        newRecivername.unshift(item.sender_username)
+      }
     })
     friendList_room.forEach(item => {
-      if (!newRecivername.includes(item.receiver_username) && item.receiver_username !== undefined && item.receiver_username !== userId) {
-        newRecivername.unshift(item.receiver_username)
+      if (!newRecivername.includes(item) && item !== undefined && item !== userId) {
+        newRecivername.unshift(item)
       }
     })
     setReceiver_name([...newRecivername])
-  }, [allChatHistory,friendList_room])
-
-  // useEffect(()=>{
-  //   const newRecivername1 = [friendList_room?.shift(),...receiver_name]
-  //   setReceiver_name(newRecivername1)
-  // },[friendList_room])
+  }, [allChatHistory, friendList_room])
 
   useEffect(() => {
     const newChatHistory = []
@@ -121,7 +120,7 @@ export default function Chat() {
     return (
       <div style={{
         display: 'flex',
-        width:'100%',
+        width: '100%',
         height: '100%',
         textAlign: 'center',
         marginLeft: '20px',
@@ -243,7 +242,7 @@ export default function Chat() {
                 borderColor: "rgba(140, 140, 140, 0.35)",
                 resize: 'none'
               }} />}
-        </Content> : <NullUser/>}
+        </Content> : <NullUser />}
       </Layout>
     </Content>
   )

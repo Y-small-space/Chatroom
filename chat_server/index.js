@@ -94,10 +94,7 @@ io.on('connection', (socket) => {
         } catch (error) {
             console.error('查询信息时出错：', error)
         }
-
-
     })
-
     socket.on('disconnect', () => {
         console.log('User disconnected');
     })

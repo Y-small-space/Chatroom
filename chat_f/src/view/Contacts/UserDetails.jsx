@@ -26,6 +26,7 @@ export default function UserDetails() {
         const roomId = response.data.roomId;
         if (!friendList_room.includes(selectedUser)) {
           setFriendList_room((prevFriendList) => [selectedUser, ...prevFriendList,]);
+          // console.log(friendList_room)
         }
         navigate(`/layout/chat?selectedUser=${userId2}&roomId=${roomId}`);
       }

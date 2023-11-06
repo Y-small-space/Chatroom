@@ -23,7 +23,6 @@ const userId = localStorage.getItem('userId')
 export default function Bar() {
   const navigator = useNavigate()
   const onClick = (e) => {
-    console.log(`/${e.key}`)
     navigator(`/layout/${e.key}`)
   }
 

@@ -86,7 +86,12 @@ export default function Chat() {
       }
     })
     setReceiver_name([...newRecivername])
-  }, [allChatHistory, friendList_room])
+  }, [allChatHistory,friendList_room])
+
+  // useEffect(()=>{
+  //   const newRecivername1 = [friendList_room?.shift(),...receiver_name]
+  //   setReceiver_name(newRecivername1)
+  // },[friendList_room])
 
   useEffect(() => {
     const newChatHistory = []

@@ -30,6 +30,7 @@ router.post('/createRoom', async (req, res) => {
 
             res.json({ roomId });
         }
+        console.log("chatroom create successfully")
     } catch (error) {
         console.error('处理请求时出错：',error);
         res.status(500).json({error:'处理请求时出错！'});

@@ -1,14 +1,11 @@
-import React, { useState, useEffect,useCallback} from 'react'
-import axios from 'axios';
+import React, { useState, useEffect} from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { Layout, Button, List, Divider, Avatar} from 'antd';
 import store from '../../Redux/store'
 import { Outlet, useNavigate } from 'react-router-dom'
-import { useFriendList } from '../Layout/index'
 import getContactListAction from '../../Redux/actionCreator/getContactListAction';
 const { Content, Sider } = Layout;
 
-const userId = localStorage.getItem('userId')
 
 export default function Contacts() {
   const [isClick, setIsClick] = useState(false);
@@ -16,14 +13,14 @@ export default function Contacts() {
   const [selectedUser, setSelectedUser] = useState(null);
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate();
-  const { friendList_room, setFriendList_room } = useFriendList()
+
 
   useEffect(() => {
     LoadContactList()
   }, [])
 
   const handleAddFriends = () => {
-    setIsClick(!isClick);
+    navigate('/layout/contacts/seachuser')
   }
 
   const LoadContactList = () => {
@@ -98,6 +95,7 @@ export default function Contacts() {
                       () => {
                         setIsClick(false)
                         setSelectedUser(item)
+                        navigate(`/layout/contacts/userdetails?id=${item.username}`)
                       }}>Content</div>
                   </List.Item>
                 )}

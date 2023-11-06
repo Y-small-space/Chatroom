@@ -27,9 +27,8 @@ export default function SearchUserPage() {
           });
         console.log(friendId, userId);
         const message = response.data.message;
-        console.log(message);
+        console.log(message.users);
         setSuccessMessage(message);
-        LoadContactList();
       } catch (error) {
         setErrorMessage(`${error.message}`)
         console.error('添加好友失败', error);
@@ -42,8 +41,7 @@ export default function SearchUserPage() {
     setErrorMessage('');
     try {
       const response = await axios.get(`http://localhost:4000/api/search?query=${searchUser}`);
-      setSearchResult(response.data);
-      console.log(response.data)
+      setSearchResult(response.data.users[0]);
     } catch (error) {
       console.error('搜索失败：', error)
     }
@@ -70,14 +68,11 @@ export default function SearchUserPage() {
       ></Input>
       {searchResult &&
         <Card
-          style={{ width: '500px', marginTop: '20px', height: '280px', backgroundColor: '' }}
+          style={{ display:'flex',justifyContent:'space-between',alignItems:'center',flexDirection:'column',width: '500px', marginTop: '20px', height: '280px', backgroundColor: '',textAlign:'center' }}
         >
-          <Avatar style={{ margin: '30px', backgroundColor: 'rgb(0,150,255)' }} size={70}>{searchResult[0]?.username}</Avatar>
-          <Card.Meta
-            description={searchResult[0]?.username}
-            title=''
-          />
-          <Button onClick={AddFriends} style={{ marginTop: '10px', border: "0", backgroundColor: 'rgb(100,100,100,0.5)' }}>ADD</Button>
+          <Avatar style={{ marginTop: '30px', backgroundColor: 'rgb(0,150,255)' }} size={70}>{searchResult.username}</Avatar>
+          <div style={{marginTop:'20px',height:'20px',textAlign:"center",fontSize:'30px'}}>{searchResult.username}</div>
+          <Button onClick={()=>AddFriends(searchResult.username)} style={{ marginTop: '40px', border: "0", backgroundColor: 'rgb(100,100,100,0.5)' }}>ADD</Button>
         </Card>}
     </Card>
   )

@@ -1,16 +1,21 @@
-import React ,{useState}from 'react'
-import { Layout, Button, List, Divider, Avatar, Card, Input } from 'antd';
-import { UserOutlined } from '@ant-design/icons'
+import React from 'react'
+import { Button } from 'antd';
+
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useFriendList } from '../Layout/index'
+import axios from 'axios';
 const userId = localStorage.getItem('userId')
 
 export default function UserDetails() {
-  const [searchResult, setSearchResult] = useState(null);
-  const [successMessage, setSuccessMessage] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams()
+  const selectedUser = searchParams.get('id')
+  const { friendList_room, setFriendList_room } = useFriendList()
+  const navigate = useNavigate()
+
   const hanleChatButtonClick = async () => {
     try {
       const userId1 = userId;
-      const userId2 = selectedUser.username;
+      const userId2 = selectedUser;
 
       const response = await axios.post('http://localhost:4000/api/createRoom', {
         userId1,
@@ -19,8 +24,8 @@ export default function UserDetails() {
 
       if (response.status === 200) {
         const roomId = response.data.roomId;
-        if (!friendList_room.includes(selectedUser.username)) {
-          setFriendList_room((prevFriendList) => [...prevFriendList, selectedUser.username]);
+        if (!friendList_room.includes(selectedUser)) {
+          setFriendList_room((prevFriendList) => [selectedUser, ...prevFriendList,]);
         }
         navigate(`/layout/chat?selectedUser=${userId2}&roomId=${roomId}`);
       }
@@ -47,7 +52,7 @@ export default function UserDetails() {
           marginBottom: '280px',
           fontSize: '50px'
         }}
-      >{user.username}</div>
+      >{selectedUser}</div>
       <Button
         ghost
         size={'large'}

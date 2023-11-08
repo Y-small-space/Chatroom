@@ -1,11 +1,11 @@
 import React from 'react'
-import { Avatar, Layout, Menu } from 'antd';
-import { CommentOutlined, TeamOutlined } from "@ant-design/icons"
+import { Avatar, Dropdown, Layout, Menu, Space } from 'antd';
+import { CommentOutlined, LogoutOutlined, TeamOutlined, UserOutlined } from "@ant-design/icons"
 import { useNavigate } from "react-router-dom"
 const { Header } = Layout;
 
 
-const items = [
+const items1 = [
   {
     label: 'Chat',
     key: 'chat',
@@ -17,6 +17,18 @@ const items = [
     icon: <TeamOutlined />
   }
 ]
+const items = [
+  {
+    label: 'Profile',
+    key: 'profile',
+    icon: <UserOutlined />
+  },
+  {
+    label: 'Logout',
+    key: 'logout',
+    icon: <LogoutOutlined />
+  }
+]
 
 const userId = localStorage.getItem('userId')
 
@@ -25,7 +37,12 @@ export default function Bar() {
   const onClick = (e) => {
     navigator(`/layout/${e.key}`)
   }
-
+  const userClick = (e) => {
+    if (e.key === 'logout') {
+      localStorage.clear()
+      navigator('/login')
+    }
+  }
   return (
     <Header
       style={{
@@ -38,8 +55,17 @@ export default function Bar() {
         WebkitBackdropFilter: "blur(10px)",
       }}
     >
-      <Menu items={items} style={{ marginLeft: "100px", backgroundColor: "transparent", fontSize: '18px' }} onClick={onClick} mode='horizontal' />
-      <Avatar size={50} style={{ float: 'right', marginRight: '30px' }}>{userId}</Avatar>
+      <Menu items={items1} style={{ marginLeft: "100px", backgroundColor: "transparent", fontSize: '18px' }} onClick={onClick} mode='horizontal' />
+      <Dropdown
+        menu={{
+          items,
+          onClick: userClick,
+        }}
+      >
+        <Space>
+          <Avatar size={50} style={{ float: 'right', marginRight: '30px' }}>{userId}</Avatar>
+        </Space>
+      </Dropdown>
     </Header>
   )
 }

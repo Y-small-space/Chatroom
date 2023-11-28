@@ -16,8 +16,8 @@ server.on('request',(req,res) =>{
     //为了防止中文显示乱码的问题，需要设置响应头Content-Type的值为text/html:charset=utf-8
     res.setHeader('Content-Type','text/html;charset=utf-8')
     //把包含中文的内容，响应给客户端
-     //调用res.end方法
-     res.end(str)
+    //调用res.end方法
+    res.end(str)
 })
 
 server.listen(80,()=>{

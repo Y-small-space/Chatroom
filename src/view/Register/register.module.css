@@ -1,0 +1,31 @@
+/* 在 CSS 中引入 Roboto 字体 */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.register {
+  height: 100vh;
+  background-image: url('../../../public/background/02.png');
+  background-size: 110%;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.registercontent {
+  width: 20%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px)
+}
+
+.registerfonts {
+  font-family: 'Roboto', sans-serif;
+  margin-top: 10%;
+  font-size: 4.5rem;
+  color: #fa541c;
+}

@@ -1,0 +1,29 @@
+.header {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.menu {
+  margin-left: 6%;
+  background-color: transparent;
+  font-size: 1.5rem;
+  width: 50%;
+}
+
+.userid {
+  margin-right: 10%;
+  font-size: 1.3rem;
+  font-family: 'YourFloralFont', cursive;
+}
+
+
+.avatar {
+  float: right;
+  margin-right: 6%;
+}

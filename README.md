@@ -1,5 +1,5 @@
 # chatroom-ts
 
-正在把旁边的js版本改成ts版本
+## 技术栈
 
-现在处于修改阶段
+typescript react react-redux react-router AntiDesign axios

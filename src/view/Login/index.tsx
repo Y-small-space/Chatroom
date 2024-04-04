@@ -6,32 +6,41 @@ import {
   EyeInvisibleOutlined,
   ArrowRightOutlined,
 } from "@ant-design/icons";
+import { fetchChatHistory } from "../../Store/allhistorySlice";
+import { fetchUsermessage } from "../../Store/userMessageSlice";
 import { useNavigate } from "react-router-dom";
 import sty from "./login.module.css";
+import { api } from "../../api/api";
+import { useAppDispatch } from "../../Store/hooks";
 
 export default function Login() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [isError, setIsError] = useState("");
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const handleLogin = async () => {
     console.log("PhoneNumber:", phoneNumber);
     try {
-      const response = await fetch("http://localhost:4000/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ phoneNumber, password }),
+      const response: any = await api.post("/login", {
+        phoneNumber,
+        password,
       });
 
-      if (response.ok) {
+      console.log(response);
+
+      if (response.status === 200) {
         const authorizationHeader = response.headers.get("Authorization");
         sessionStorage.setItem("userId", phoneNumber);
         sessionStorage.setItem("token", authorizationHeader as string);
+        console.log("====================================");
+        console.log(authorizationHeader);
+        console.log("====================================");
         console.log("登录成功！");
         message.success("登录成功！");
+        dispatch(fetchChatHistory());
+        dispatch(fetchUsermessage());
         navigate("/layout");
       } else {
         setIsError("账号或者密码有误！请重新尝试！");

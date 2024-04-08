@@ -32,6 +32,7 @@ const beforeUpload = (file: File) => {
   }
   return isJpgOrPng && isLt2M;
 };
+
 const userId = sessionStorage.getItem("userId");
 
 const ShowProfile: React.FC<Props> = () => {

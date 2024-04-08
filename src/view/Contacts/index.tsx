@@ -8,6 +8,7 @@ import style from "./contact.module.css";
 import socket from "../../socket/index";
 import { RootState } from "../../Store/store";
 import { Friend, RoomId } from "../../types";
+import { api } from "../../api/api";
 const { Content, Sider } = Layout;
 const userId = sessionStorage.getItem("userId");
 
@@ -25,7 +26,7 @@ export default function Contacts() {
 
   const createOrGetRoomId = async (userId2: string) => {
     try {
-      const response = await fetch("http://localhost:4000/api/roomId", {
+      const response: any = await api.post("http://localhost:4000/api/roomId", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -33,8 +34,8 @@ export default function Contacts() {
         body: JSON.stringify({ userId1: Number(userId), userId2 }),
       });
 
-      if (!response.ok) {
-        throw new Error("获取房间ID失败");
+      if (response.status === 404) {
+        throw new Error("用户不存在");
       }
 
       const data = await response.json();

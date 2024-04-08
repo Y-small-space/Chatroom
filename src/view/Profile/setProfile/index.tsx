@@ -3,6 +3,7 @@ import { Layout, Select } from "antd";
 import { DatePicker, message, Button, Form, Input } from "antd";
 import style from "./setprofile.module.css";
 import { useNavigate } from "react-router-dom";
+import { api } from "../../../api/api";
 
 const { Content } = Layout;
 
@@ -25,13 +26,8 @@ const SetProfile: React.FC = () => {
     const formDate = { ...values, phoneNumber };
 
     try {
-      const response = await fetch("http://localhost:4000/api/setprofile", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `${jwt}`,
-        },
-        body: JSON.stringify(formDate),
+      const response: any = await api.post("/setprofile", {
+        profileData: formDate,
       });
 
       if (response.status === 200) {

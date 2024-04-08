@@ -13,9 +13,10 @@ export const api = axios.create({
 api.interceptors.request.use(
   (config) => {
     // 在发送请求之前做些什么
-    const jwt = localStorage.getItem("jwt"); // 假设你的 JWT 存储在本地存储中
+    const jwt = sessionStorage.getItem("token"); // 假设你的 JWT 存储在本地存储中
     if (jwt) {
       config.headers.Authorization = jwt; // 添加 JWT 到请求头
+      console.log(config.headers.Authorization);
     }
     return config;
   },

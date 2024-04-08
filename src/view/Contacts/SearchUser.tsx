@@ -7,10 +7,11 @@ import { useNavigate } from "react-router-dom";
 import { fetchUsermessage } from "../../Store/userMessageSlice";
 import { useAppDispatch } from "../../Store/hooks";
 import { User } from "../../types";
+import { api } from "../../api/api";
 const userId = sessionStorage.getItem("userId");
 
 export default function SearchUserPage() {
-  const [searchResult, setSearchResult] = useState<User|null>();
+  const [searchResult, setSearchResult] = useState<User | null>();
   const [searchUser, setSearchUser] = useState("");
   const [isClickSearch, setIsClickSearch] = useState(false);
   const navigate = useNavigate();
@@ -26,19 +27,10 @@ export default function SearchUserPage() {
   // 添加好友
   const AddFriends = async (friendId: number) => {
     try {
-      const jwt = sessionStorage.getItem("token");
-      const response = await axios.post(
-        "http://localhost:4000/api/addFriends",
-        {
-          userIdToAdd: friendId,
-          currentUserId: userId,
-        },
-        {
-          headers: {
-            Authorization: `${jwt}`,
-          },
-        }
-      );
+      const response: any = await api.post("/addFriends", {
+        userIdToAdd: friendId,
+        currentUserId: userId,
+      });
       if (response.status === 200) {
         console.log(friendId, userId);
         message.success("Successfully Added");

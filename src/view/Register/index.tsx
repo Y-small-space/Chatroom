@@ -8,6 +8,8 @@ import {
 } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import sty from "./register.module.css";
+import { api } from "../../api/api";
+import { AxiosPromise, ResponseType } from "axios";
 
 export default function Register() {
   const [phoneNumber, setPhoneNumber] = useState<string>("");
@@ -44,15 +46,12 @@ export default function Register() {
     }
 
     try {
-      const response = await fetch("http://localhost:4000/api/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ phoneNumber, password }),
+      const response: any = await api.post("/register", {
+        phoneNumber,
+        password,
       });
 
-      if (response.ok) {
+      if (response.status === 200) {
         // 注册成功，可以进行重定向或显示成功消息
         console.log("注册成功！");
         message.success("注册成功！！！");

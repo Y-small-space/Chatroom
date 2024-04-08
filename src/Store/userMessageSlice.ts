@@ -25,7 +25,8 @@ export const fetchUsermessage = createAsyncThunk<User, void, { state: RootState 
       const date = new Date(res.data.birthday);
       const formattedDate = date.toLocaleDateString();
       localStorage.setItem('userMessage', JSON.stringify({ ...res.data, birthday: formattedDate }));
-      return res.data;
+      const newDate = { ...res.data, birthday: formattedDate }
+      return newDate;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }

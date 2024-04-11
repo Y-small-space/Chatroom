@@ -1,5 +1,28 @@
-# chatroom-ts
+# Chatroom
+
+⼀个可以即时聊天的⽹⻚
+
+独⾃设计、编写前后端代码、建⽴数据库与后端连接
 
 ## 技术栈
 
-typescript react react-redux react-router AntiDesign axios
+Typescript React react-redux react-router Ant Design
+
+## 内容
+
+- 使⽤ React、Ant Design 构建⻚⾯，提供美观、响应式的⽤户界⾯，增强⽤户体验。
+
+- 利⽤ React Router 实现前端路由，使⽤ React Redux 管理前端应⽤状态。
+
+- ⽤户注册和登录功能，使⽤ JWT 进⾏身份验证。
+
+- 基于 WebSocket 实现⽤户间的实时聊天功能。
+
+## 优化⼿段
+
+- 代码分割： 通过代码分割技术，Chatroom 将⻚⾯划分为多个模块，在需要时才加载相关代码，
+  减少了⾸屏加载时间和资源请求次数。
+- 协商缓存： 后端使⽤协商缓存机制，与客户端协商资源的缓存策略，减少了不必要的资源请
+  求，提⾼了⽹站性能和⽤户体验。
+- 路由懒加载： Chatroom 使⽤ React-Router 实现前端路由，并采⽤了路由懒加载技术，将⻚⾯
+  按需加载，减少了初始加载时间和资源占⽤

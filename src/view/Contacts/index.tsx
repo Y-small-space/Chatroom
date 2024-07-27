@@ -31,14 +31,17 @@ export default function Contacts() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ userId1: Number(userId), userId2 }),
+        userIds: {
+          userId1: Number(userId),
+          userId2: Number(userId2),
+        },
       });
 
       if (response.status === 404) {
         throw new Error("用户不存在");
       }
 
-      const data = await response.json();
+      const data = response.data;
       return data.roomId;
     } catch (error) {
       console.error("获取房间ID时出错：", error);

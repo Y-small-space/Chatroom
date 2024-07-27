@@ -97,10 +97,10 @@ const Layouts: React.FC = () => {
         setRoomId,
       }}
     >
-      <Layout className="layout">
+      <div style={{ width: "100%", display: "flex" }}>
         <Bar />
         <Outlet />
-        <Footer
+        {/* <Footer
           style={{
             textAlign: "center",
             backgroundColor: "transparent",
@@ -109,8 +109,8 @@ const Layouts: React.FC = () => {
           }}
         >
           Chat Room ©2023 Created by JY
-        </Footer>
-      </Layout>
+        </Footer> */}
+      </div>
     </LayoutContext.Provider>
   );
 };
